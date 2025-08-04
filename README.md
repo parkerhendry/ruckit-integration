@@ -117,7 +117,7 @@ A Geotab page add-in that displays all Ruckit device mappings in a searchable, o
 
 1. **Clone the Parent Repository**
    ```bash
-   git clone https://github.com/your-org/ruckit-geotab-integration-suite.git
+   git clone https://github.com/parkerhendry/ruckit-integration
    cd ruckit-geotab-integration-suite
    ```
 
@@ -129,7 +129,7 @@ A Geotab page add-in that displays all Ruckit device mappings in a searchable, o
 
 3. **Install Backend Service**
    ```bash
-   cd backend-sync-service
+   cd ruckit-integration-backend
    pip install -r requirements.txt
    cp .env.example .env
    # Configure your Geotab credentials in .env
@@ -137,14 +137,14 @@ A Geotab page add-in that displays all Ruckit device mappings in a searchable, o
 
 4. **Install Geotab Add-Ins**
    - Navigate to MyGeotab → Administration → System → Add-Ins
-   - Install the Button Add-In from `device-mapping-button/addin.js`
-   - Install the Assets Add-In from `assets-frontend/` directory
+   - Install the Button Add-In from `ruckit-integration-frontend-dropdown/` directory
+   - Install the Assets Add-In from `ruckit-integration-frontend-menu/` directory
    - Configure company branding and settings as needed
 
 5. **Start the System**
    ```bash
    # Start backend service
-   cd backend-sync-service
+   cd ruckit-integration-backend
    python ruckit.py
    
    # Add-ins are now available in MyGeotab interface
@@ -206,51 +206,3 @@ Monitor system health through:
 - Complete logging of all synchronization activities
 - Timestamp tracking for all mapping changes
 - Error logging for compliance and debugging
-
-## 🚀 Production Deployment
-
-### Containerization
-```dockerfile
-# Example Docker deployment for backend service
-FROM python:3.9-slim
-COPY backend-sync-service/ /app
-WORKDIR /app
-RUN pip install -r requirements.txt
-CMD ["python", "ruckit.py"]
-```
-
-### Process Management
-- Use systemd, supervisor, or Docker for service management
-- Configure automatic restarts and health monitoring
-- Set up log rotation and retention policies
-
-### Monitoring & Alerting
-- Integrate with monitoring solutions (Prometheus, Grafana)
-- Set up alerts for API failures or sync discrepancies
-- Configure health check endpoints for load balancers
-
-## 🧪 Testing & Development
-
-### Development Environment
-Each component includes its own development setup:
-- Backend: Python virtual environment with test data
-- Add-ins: Geotab sandbox environment for testing
-- Integration: End-to-end testing with sample device data
-
-### Testing Strategy
-- Unit tests for coordinate comparison logic
-- Integration tests for API connectivity
-- UI testing for add-in functionality
-- End-to-end synchronization testing
-
-## 📈 Scaling & Performance
-
-### Horizontal Scaling
-- Backend service can be deployed in multiple instances
-- Load balancing across different Geotab databases
-- Regional deployment for global fleet operations
-
-### Performance Optimization
-- Configurable polling intervals based on fleet size
-- Efficient API batching and caching strategies
-- Memory optimization for large device inventories

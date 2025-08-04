@@ -1,0 +1,9 @@
+[submodule "ruckit-integration-frontend-dropdown"]
+	path = ruckit-integration-frontend-dropdown
+	url = https://github.com/parkerhendry/ruckit-integration-frontend-dropdown
+[submodule "ruckit-integration-frontend-menu"]
+	path = ruckit-integration-frontend-menu
+	url = https://github.com/parkerhendry/ruckit-integration-frontend-menu
+[submodule "ruckit-integration-backend"]
+	path = ruckit-integration-backend
+	url = https://github.com/parkerhendry/ruckit-integration-backend
